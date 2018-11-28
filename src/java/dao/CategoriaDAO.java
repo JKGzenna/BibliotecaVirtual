@@ -64,7 +64,8 @@ public class CategoriaDAO {
             ArrayList<Categoria> lista = new ArrayList<>();
             Categoria cat ;
             while (resultado.next()){
-                cat = new Categoria();
+            cat = new Categoria();
+                cat.setCodigo(resultado.getInt("codigo"));
                 cat.setNombre(resultado.getString("nombre"));
                 lista.add(cat);
             }

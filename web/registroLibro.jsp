@@ -60,29 +60,33 @@
                       </div>
                       <div class="form-group">
                           <label class="col-sm-3 control-label no-padding-right">
-                              Categoría Temática:
-                          </label>
-                          <div class="col-sm-3">
-                              <select name="">
-                                  <option value="0">Seleccione Categoría</option>
-                                  <% for(Categoria c:CategoriaDAO.listar()){ %>
-                                  <option value="<%= c.getCodigo()%>"><%= c.getNombre()%></option>
-                                  <%}%>
-                              </select>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <label class="col-sm-3 control-label no-padding-right">
-                              Editorial:
-                          </label>
-                          <div class="col-sm-3">
-                              <select name="">
-                                  <option value="0">Seleccione Editorial</option>
-                                  <% for(Editorial e:EditorialDAO.listar()){ %>
-                                  <option value="<%= e.getNit()%>"><%= e.getNombre()%></option>
-                                  <%}%>
-                              </select>
-                          </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label no-paddding-right">
+                                                                Categoría Temática:
+                                                            </label>
+                                                            <div class="col-sm-">
+                                                                <select name="categoria">
+                                                                    <option value="0">Seleccione Categoria</option>
+                                                                    <% for(Categoria c:CategoriaDAO.listar()){ %>
+                                                                    <option value="<%= c.getCodigo()%>"><%= c.getNombre()%></option>
+                                                                    <%}%>
+                                                                </select>
+                                                            </div> 
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label no-paddding-right">
+                                                                Editorial:
+                                                            </label>
+                                                            <div class="col-sm-3">
+                                                                <select name="editorial">
+                                                                    <option value="0">Seleccione la Editorial</option>
+                                                                    <% for(Editorial e:EditorialDAO.listar()){ %>
+                                                                    <option value="<%= e.getNit()%>"><%= e.getNombre() %></option>
+                                                                    <%}%>
+                                                                </select>
+                                                            </div> 
+                                                        </div>
                       </div>
                       <div class="form-group">
                           <label class="col-sm-3 control-label no-padding-right">
