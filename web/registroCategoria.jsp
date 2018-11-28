@@ -22,17 +22,16 @@
                 <form action="CategoriaController" method="post" class="form-horizontal"
                       <br>
                       <br>
-                      
                       <div class="form-group">
-                          <label class="col-sm-3 control-label no-padding-right">">
+                          <label class="col-sm-control-label no-padding-right">
                               Nombre:
                           </label>
                           <div class="col-sm-3">
-                              <input type="text" name="nombre" value="" placeholder="Nombre de la Categoría"/> />
+                              <input type="text" name="nombre" value="" placeholder="Nombre de Categoría"/>
                           </div>
                       </div>
                       <br>
-                      <div class="col-sm3">
+                      <div class="col-sm-3">
                           <button name="Registrar" class="btn btn-success" type="submit" value="Registrar"
                                       <i class="fa fa-save"></i>
                                       Registrar

@@ -1,5 +1,5 @@
-<div class="table-header">Biblioteca Virtual</div>
 
+<div class="table-header"> Biblioteca Virtual</div>
 <br>
 <ul>
     <li>
@@ -8,15 +8,14 @@
             Lista de Libros
         </a>
     </li>
-    <br>
     <li>
-        <a href="#">
+        <a href="registroLibro.jsp">
             <i class ="menu-icon fa fa-caret-right"></i>
             Registrar Libro
         </a>
     </li>
     <li>
-        <a href ="#">
+        <a href ="registroEditorial.jsp">
             <i class ="menu-icon fa fa-caret-right"></i>
             Registrar Editorial
         </a>

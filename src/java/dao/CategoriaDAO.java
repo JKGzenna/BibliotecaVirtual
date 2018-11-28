@@ -7,9 +7,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import model.Categoria;
 
 /**
@@ -52,6 +52,26 @@ public class CategoriaDAO {
             return false;
         }
         
+    }
+     
+             public static ArrayList<Categoria> listar(){
+        
+        try {
+            String SQL = "SELECT * FROM categorias";
+            Connection con = Conexion.conectar();
+            PreparedStatement st = con.prepareStatement(SQL);
+            ResultSet resultado = st.executeQuery();
+            ArrayList<Categoria> lista = new ArrayList<>();
+            Categoria cat ;
+            while (resultado.next()){
+                cat = new Categoria();
+                cat.setNombre(resultado.getString("nombre"));
+                lista.add(cat);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            return null;
+        }
     }
     
     

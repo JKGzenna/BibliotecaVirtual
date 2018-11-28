@@ -5,20 +5,20 @@
  */
 package controller;
 
-import dao.CategoriaDAO;
+import dao.LibroDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Categoria;
+import model.Libro;
 
 /**
  *
  * @author Arranque 4
  */
-public class CategoriaController extends HttpServlet {
+public class LibroController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class CategoriaController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CategoriaController</title>");            
+            out.println("<title>Servlet LibroController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CategoriaController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LibroController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,32 +74,53 @@ public class CategoriaController extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 
-        String nombre = request.getParameter("nombre");
-       
-        Categoria c = new Categoria();
-        
-        c.setNombre(nombre);
-        
-        if (request.getParameter("Registrar")!=null) {
+            String isbn=request.getParameter("isbn");
+            String titulo=request.getParameter("titulo");
+            String autor=request.getParameter("autor");
+            String publicacion=request.getParameter("publicacion");
+            int categoria=Integer.parseInt(request.getParameter("categoria"));
+            String editorial=request.getParameter("editorial");
+            String descripcion=request.getParameter("descripcion");
+
+            Libro lib = new Libro();
             
-            if(CategoriaDAO.registrar(c)){
-                request.setAttribute("mensaje", "La Categoría se ha registrado correctamente");
+            lib.setIsbn(isbn);
+            lib.setTitulo(titulo);
+            lib.setNombre_autor(autor);
+            lib.setPublicacion(publicacion);
+            lib.setCodigo_categoria(categoria);
+            lib.setNit_editorial(editorial);
+            lib.setDescripcion(descripcion);
+            
+                   if (request.getParameter("Registrar")!=null){
+            
+            if(LibroDAO.registrar(lib)){
+                request.setAttribute("mensaje", "El libro se ha registrado correctamente");
                 
-            }else {
-                request.setAttribute("mensaje", "No se ha podido registrar la Categoría");
+            }else{
+                request.setAttribute("mensaje", "El libro no se ha registrado");
             }
-        } else if (request.getParameter("Eliminar")!=null){
-            
-            if(CategoriaDAO.eliminar(c)){
-                request.setAttribute("mensaje", "se ha eliminado la Categoría");
-            
-            }else {
-                request.setAttribute("mensaje", "No se ha podido eliminar la Categoría");
+        }else if (request.getParameter("Actualizar")!=null){
+            if(LibroDAO.actualizar(lib)){
+                request.setAttribute("mensaje", "El libro se ha actualizado correctamente");
+                
+            }else{
+                request.setAttribute("mensaje", "El libro no se ha actualizado");
             }
-        } else {
-            request.setAttribute("mensaje", "Acción Desconocida");
+        }else if (request.getParameter("Eliminar")!=null){
+            if(LibroDAO.eliminar(lib)){
+                request.setAttribute("mensaje", "El libro se ha eliminado correctamente");
+                
+            }else{
+                request.setAttribute("mensaje", "El libro no se ha eliminado");
+                
+            }
+        }else {
+                request.setAttribute("mensaje", "Acción Desconocida");
         }
-        request.getRequestDispatcher("registroCategoria.jsp").forward(request,response);
+
+        request.getRequestDispatcher("registroLibro.jsp").forward(request, response);
+
     }
 
     /**

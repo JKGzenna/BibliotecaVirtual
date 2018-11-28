@@ -5,20 +5,20 @@
  */
 package controller;
 
-import dao.CategoriaDAO;
+import dao.EditorialDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Categoria;
+import model.Editorial;
 
 /**
  *
  * @author Arranque 4
  */
-public class CategoriaController extends HttpServlet {
+public class EditorialController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class CategoriaController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CategoriaController</title>");            
+            out.println("<title>Servlet EditorialController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CategoriaController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditorialController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,32 +74,52 @@ public class CategoriaController extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 
-        String nombre = request.getParameter("nombre");
-       
-        Categoria c = new Categoria();
+        String nit=request.getParameter("nit");
+        String nombre=request.getParameter("nombre");
+        String telefono=request.getParameter("telefono");
+        String direccion=request.getParameter("direccion");
+        String email=request.getParameter("email");
+        String sitioweb=request.getParameter("sitioweb");
+
+        Editorial e = new Editorial();
         
-        c.setNombre(nombre);
+        e.setNit (nit);
+        e.setNombre(nombre);
+        e.setTelefono(telefono);
+        e.setDireccion(direccion);
+        e.setEmail(email);
+        e.setSitioweb(sitioweb);
         
-        if (request.getParameter("Registrar")!=null) {
+        if (request.getParameter("Registrar")!=null){
             
-            if(CategoriaDAO.registrar(c)){
-                request.setAttribute("mensaje", "La Categoría se ha registrado correctamente");
+            if(EditorialDAO.registrar(e)){
+                request.setAttribute("mensaje", "La Editorial se ha registrado correctamente");
                 
-            }else {
-                request.setAttribute("mensaje", "No se ha podido registrar la Categoría");
+            }else{
+                request.setAttribute("mensaje", "La Editorial no se ha registrado");
             }
-        } else if (request.getParameter("Eliminar")!=null){
-            
-            if(CategoriaDAO.eliminar(c)){
-                request.setAttribute("mensaje", "se ha eliminado la Categoría");
-            
-            }else {
-                request.setAttribute("mensaje", "No se ha podido eliminar la Categoría");
+        }else if (request.getParameter("Actualizar")!=null){
+            if(EditorialDAO.actualizar(e)){
+                request.setAttribute("mensaje", "La Editorial se ha actualizado correctamente");
+                
+            }else{
+                request.setAttribute("mensaje", "La Editorial no se ha actualizado");
             }
-        } else {
-            request.setAttribute("mensaje", "Acción Desconocida");
-        }
-        request.getRequestDispatcher("registroCategoria.jsp").forward(request,response);
+        }else if (request.getParameter("Eliminar")!=null){
+            if(EditorialDAO.eliminar(e)){
+                request.setAttribute("mensaje", "La Editorial se ha eliminado correctamente");
+                
+            }else{
+                request.setAttribute("mensaje", "La Editorial no se ha eliminado");
+                
+            }
+        }else {
+                    request.setAttribute("mensaje", "Acción Desconocida");
+                    }
+
+        request.getRequestDispatcher("registroEditorial.jsp").forward(request, response);
+
+
     }
 
     /**
