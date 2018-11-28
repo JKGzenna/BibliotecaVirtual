@@ -66,7 +66,7 @@
                               <select name="">
                                   <option value="0">Seleccione Categoría</option>
                                   <% for(Categoria c:CategoriaDAO.listar()){ %>
-                                  <option value=""><%= c.getNombre()%></option>
+                                  <option value="<%= c.getCodigo()%>"><%= c.getNombre()%></option>
                                   <%}%>
                               </select>
                           </div>
@@ -79,7 +79,7 @@
                               <select name="">
                                   <option value="0">Seleccione Editorial</option>
                                   <% for(Editorial e:EditorialDAO.listar()){ %>
-                                  <option value="<%= e.getNombre()%>"></option>
+                                  <option value="<%= e.getNit()%>"><%= e.getNombre()%></option>
                                   <%}%>
                               </select>
                           </div>

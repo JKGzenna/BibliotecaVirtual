@@ -11,10 +11,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registro de Categorias</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <%@include file="css.jsp"%>
     </head>
     <body>
         <%@include file="menu.jsp"%>
-        <div class ="form-control">
+<!--        <div class ="form-control">-->
             <div class="table-header">
                 Desde aquí puede añadir o eliminar una Categoría
             </div>
@@ -23,7 +24,8 @@
                       <br>
                       <br>
                       <div class="form-group">
-                          <label class="col-sm-control-label no-padding-right">
+<!--                          <label class="col-sm-control-label no-padding-right">-->
+                          <label class="col-sm-1">
                               Nombre:
                           </label>
                           <div class="col-sm-3">
