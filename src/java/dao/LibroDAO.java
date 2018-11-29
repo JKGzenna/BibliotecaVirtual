@@ -7,7 +7,11 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Libro;
 
 /**
@@ -90,4 +94,38 @@ public class LibroDAO {
                 return false;
         }
          }
-}
+         
+    public static ArrayList<Libro> listar(){
+        
+        try {
+            String SQL ="SELECT * FROM libros;";
+            Connection con = Conexion.conectar();
+            PreparedStatement st = con.prepareStatement(SQL);
+            ResultSet resultado = st.executeQuery();
+            ArrayList<Libro> lista = new ArrayList<>();
+            Libro lib;
+            
+            while(resultado.next()){
+                lib = new Libro();
+                lib.setIsbn(resultado.getString("isbn"));
+                lib.setTitulo(resultado.getString("titulo"));
+                lib.setNombre_autor (resultado.getString("nombre_autor"));
+                lib.setDescripcion(resultado.getString("descripcion"));
+                lib.setPublicacion(resultado.getString("publicacion"));
+                lib.setFecha_registro(resultado.getString("fecha_registro"));
+                lib.setCodigo_categoria(resultado.getInt("codigo_categoria"));
+                lib.setNit_editorial(resultado.getString("nit_editorial"));
+                lista.add(lib);
+            }
+            return lista;
+            
+        } catch (SQLException ex) {
+            
+        
+            return null;
+        }
+        
+        
+    
+         
+}}

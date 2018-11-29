@@ -12,6 +12,6 @@
         <title>Biblioteca Virtual</title>
     </head>
     <body>
-        <jsp:forward page="registroCategoria.jsp"></jsp:forward>
+        <jsp:forward page="listarLibro.jsp"></jsp:forward>
     </body>
 </html>

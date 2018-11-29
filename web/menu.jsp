@@ -3,7 +3,7 @@
 <br>
 <ul>
     <li>
-        <a href="index.jsp">
+        <a href="listarLibro.jsp">
             <i class="menu-icon fa fa-caret-right"></i>
             Lista de Libros
         </a>
