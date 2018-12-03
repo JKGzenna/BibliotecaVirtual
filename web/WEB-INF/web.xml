@@ -12,6 +12,10 @@
         <servlet-name>LibroController</servlet-name>
         <servlet-class>controller.LibroController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Inicio</servlet-name>
+        <servlet-class>ViewControllers.Inicio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CategoriaController</servlet-name>
         <url-pattern>/CategoriaController</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>LibroController</servlet-name>
         <url-pattern>/LibroController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Inicio</servlet-name>
+        <url-pattern>/Inicio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
